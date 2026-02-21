@@ -34,8 +34,30 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ─── Mobile Menu ─── */
     window.toggleMobileMenu = function () {
         const menu = document.getElementById('mobile-menu');
-        if (menu) menu.classList.toggle('hidden');
+        const icon = document.getElementById('menu-icon');
+        if (!menu) return;
+        const isHidden = menu.classList.toggle('hidden');
+        // Troca ícone hambúrguer ↔ X
+        if (icon) icon.className = isHidden ? 'ph ph-list text-3xl' : 'ph ph-x text-3xl';
     };
+
+    window.closeMobileMenu = function () {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+        if (!menu) return;
+        menu.classList.add('hidden');
+        if (icon) icon.className = 'ph ph-list text-3xl';
+    };
+
+    // Fecha o menu ao clicar fora dele
+    document.addEventListener('click', function (e) {
+        const menu = document.getElementById('mobile-menu');
+        const btn  = document.getElementById('menu-btn');
+        if (!menu || menu.classList.contains('hidden')) return;
+        if (!menu.contains(e.target) && !btn.contains(e.target)) {
+            window.closeMobileMenu();
+        }
+    });
 
     /* ─── Scroll suave para seção na mesma página ─── */
     window.scrollToSection = function (sectionId) {
