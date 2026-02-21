@@ -14,12 +14,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'lblue':   '#74b0cf',
-                        'dblue':   '#2b5c8d',
-                        'lgreen':  '#7cb382',
-                        'dgreen':  '#43865e',
-                        'lbeige':  '#ebca9d',
-                        'dbeige':  '#c89a66',
+                        'lblue': '#74b0cf',
+                        'dblue': '#2b5c8d',
+                        'lgreen': '#7cb382',
+                        'dgreen': '#43865e',
+                        'lbeige': '#ebca9d',
+                        'dbeige': '#c89a66',
                         'ifgreen': '#309f41'
                     },
                     fontFamily: {
@@ -31,7 +31,7 @@
     </script>
 
     <!-- AOS Animation Library -->
-    <link  href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Google Fonts -->
@@ -54,30 +54,29 @@
 
     <!-- Navbar (links brancos para contrastar com o fundo escuro) -->
     <nav class="fixed w-full z-50 transition-all duration-300" id="navbar"
-         style="background: rgba(8,22,55,0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.1);">
+        style="background: rgba(8,22,55,0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.1);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 md:h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 cursor-pointer" onclick="window.location.href='index.html'">
                     <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR Logo"
-                         class="h-10 md:h-12 w-auto brightness-0 invert"
-                         onerror="this.outerHTML='<div class=\'text-white font-bold text-xl\'>IFPR Capanema</div>'">
+                        class="h-10 md:h-12 w-auto brightness-0 invert"
+                        onerror="this.outerHTML='<div class=\'text-white font-bold text-xl\'>IFPR Capanema</div>'">
                 </div>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center" id="nav-links">
-                    <a href="index.html"              class="nav-link nav-link-white">Início</a>
-                    <a href="index.html#sobre"         class="nav-link nav-link-white">Sobre</a>
-                    <a href="index.html#objetivos"     class="nav-link nav-link-white">Objetivos</a>
-                    <a href="index.html#metodologia"   class="nav-link nav-link-white">Metodologia</a>
+                    <a href="index.html" class="nav-link nav-link-white">Início</a>
+                    <a href="index.html#sobre" class="nav-link nav-link-white">Sobre</a>
+                    <a href="index.html#objetivos" class="nav-link nav-link-white">Objetivos</a>
+                    <a href="index.html#metodologia" class="nav-link nav-link-white">Metodologia</a>
                     <a href="contato.html"
-                       class="px-6 py-2 rounded-full btn-primary font-semibold shadow-lg">Contato</a>
+                        class="px-6 py-2 rounded-full btn-primary font-semibold shadow-lg">Contato</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button onclick="toggleMobileMenu()" id="menu-btn"
-                            class="text-white focus:outline-none p-2">
+                    <button onclick="toggleMobileMenu()" id="menu-btn" class="text-white focus:outline-none p-2">
                         <i class="ph ph-list text-3xl" id="menu-icon"></i>
                     </button>
                 </div>
@@ -86,18 +85,18 @@
 
         <!-- Mobile Menu — fundo escuro sólido (combina com o fundo da página) -->
         <div id="mobile-menu" class="hidden md:hidden w-full"
-             style="background: rgba(8,22,55,0.97); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+            style="background: rgba(8,22,55,0.97); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
             <div class="flex flex-col items-center py-4 gap-1">
                 <a href="index.html"
-                   class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Início</a>
+                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Início</a>
                 <a href="index.html#sobre"
-                   class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Sobre</a>
+                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Sobre</a>
                 <a href="index.html#objetivos"
-                   class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Objetivos</a>
+                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Objetivos</a>
                 <a href="index.html#metodologia"
-                   class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Metodologia</a>
+                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Metodologia</a>
                 <a href="contato.html"
-                   class="mt-3 mb-2 px-10 py-3 rounded-full btn-primary font-semibold text-center shadow-lg text-base">Contato</a>
+                    class="mt-3 mb-2 px-10 py-3 rounded-full btn-primary font-semibold text-center shadow-lg text-base">Contato</a>
             </div>
         </div>
     </nav>
@@ -131,18 +130,18 @@
                     <div class="space-y-2">
                         <label class="text-white text-sm font-medium ml-1">Assunto</label>
                         <input type="text" name="Assunto" required class="glass-input"
-                               placeholder="Qual o motivo do contato?">
+                            placeholder="Qual o motivo do contato?">
                     </div>
 
                     <div class="space-y-2">
                         <label class="text-white text-sm font-medium ml-1">Sua Mensagem</label>
                         <textarea name="Mensagem" rows="5" required class="glass-input resize-none"
-                                  placeholder="Escreva sua mensagem aqui…"></textarea>
+                            placeholder="Escreva sua mensagem aqui…"></textarea>
                     </div>
 
                     <div class="pt-4 flex flex-col items-center gap-4">
                         <button type="submit"
-                                class="px-10 py-3 rounded-full btn-primary text-lg font-bold w-full md:w-auto flex items-center justify-center gap-2">
+                            class="px-10 py-3 rounded-full btn-primary text-lg font-bold w-full md:w-auto flex items-center justify-center gap-2">
                             <span>Enviar Mensagem</span>
                             <i class="ph ph-paper-plane-right"></i>
                         </button>
@@ -156,39 +155,43 @@
 
         <!-- ── Blocos de Informações de Contato ── -->
         <div class="max-w-4xl w-full mx-auto mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10"
-             data-aos="fade-up" data-aos-delay="100">
+            data-aos="fade-up" data-aos-delay="100">
 
             <!-- E-mail -->
-            <div class="contact-form-panel rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1 transition-transform duration-300">
+            <div
+                class="contact-form-panel rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1 transition-transform duration-300">
                 <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                     <i class="ph ph-envelope text-2xl text-lblue"></i>
                 </div>
                 <h3 class="text-white font-bold text-sm uppercase tracking-wider">E-mail</h3>
-                <a href="/cdn-cgi/l/email-protection#ef8c8e829f9a9cc18c8e9f8e818a828eaf86899f9dc18a8b9ac18d9d" class="text-gray-200 text-sm hover:text-white transition-colors break-all">
-                    <span class="__cf_email__" data-cfemail="1a797b776a6f6934797b6a7b747f777b5a737c6a68347f7e6f347868">campus.capanema@ifpr.edu.br</span>
+                <a href="/cdn-cgi/l/email-protection#ef8c8e829f9a9cc18c8e9f8e818a828eaf86899f9dc18a8b9ac18d9d"
+                    class="text-gray-200 text-sm hover:text-white transition-colors break-all">
+                    <span class="__cf_email__"
+                        data-cfemail="1a797b776a6f6934797b6a7b747f777b5a737c6a68347f7e6f347868">campus.capanema@ifpr.edu.br</span>
                 </a>
             </div>
 
             <!-- Telefone -->
-            <div class="contact-form-panel rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1 transition-transform duration-300">
+            <div
+                class="contact-form-panel rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1 transition-transform duration-300">
                 <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                     <i class="ph ph-phone text-2xl text-lgreen"></i>
                 </div>
                 <h3 class="text-white font-bold text-sm uppercase tracking-wider">Telefone</h3>
-                <a href="tel:+554630301400"
-                   class="text-gray-200 text-sm hover:text-white transition-colors">
+                <a href="tel:+554630301400" class="text-gray-200 text-sm hover:text-white transition-colors">
                     (46) 3030-1400
                 </a>
             </div>
 
             <!-- Localização -->
-            <div class="contact-form-panel rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1 transition-transform duration-300">
+            <div
+                class="contact-form-panel rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1 transition-transform duration-300">
                 <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
                     <i class="ph ph-map-pin text-2xl text-lbeige"></i>
                 </div>
                 <h3 class="text-white font-bold text-sm uppercase tracking-wider">Localização</h3>
                 <a href="https://maps.google.com/?q=Rua+Cariris+750+Capanema+PR" target="_blank" rel="noopener"
-                   class="text-gray-200 text-sm hover:text-white transition-colors leading-relaxed">
+                    class="text-gray-200 text-sm hover:text-white transition-colors leading-relaxed">
                     Rua Cariris, nº 750<br>Bairro Santa Bárbara<br>Capanema – PR
                 </a>
             </div>
@@ -197,11 +200,11 @@
 
         <!-- ── Redes Sociais ── -->
         <div class="max-w-4xl w-full mx-auto mt-8 mb-6 flex flex-col items-center gap-4 relative z-10"
-             data-aos="fade-up" data-aos-delay="200">
+            data-aos="fade-up" data-aos-delay="200">
             <p class="text-gray-400 text-xs uppercase tracking-widest font-semibold">Siga nas redes sociais</p>
             <a href="https://www.instagram.com/vidasemrestricao/" target="_blank" rel="noopener"
-               class="flex items-center gap-2 px-7 py-3 rounded-full font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
-               style="background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);">
+                class="flex items-center gap-2 px-7 py-3 rounded-full font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl shadow-lg"
+                style="background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);">
                 <i class="ph ph-instagram-logo text-xl"></i>
                 <span>@vidasemrestricao</span>
             </a>
@@ -211,12 +214,12 @@
 
     <!-- Footer -->
     <footer style="background:rgba(5,18,40,0.75); backdrop-filter:blur(10px);"
-            class="border-t border-white/10 pt-12 pb-8 relative z-10">
+        class="border-t border-white/10 pt-12 pb-8 relative z-10">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex flex-col items-center md:items-start gap-4">
                 <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR"
-                     class="h-16 w-auto brightness-0 invert opacity-80 hover:opacity-100 transition-all"
-                     onerror="this.outerHTML='<div class=\'text-white font-bold text-xl\'>IFPR Capanema</div>'">
+                    class="h-16 w-auto brightness-0 invert opacity-80 hover:opacity-100 transition-all"
+                    onerror="this.outerHTML='<div class=\'text-white font-bold text-xl\'>IFPR Capanema</div>'">
                 <p class="text-sm text-gray-300 text-center md:text-left max-w-xs">
                     Instituto Federal do Paraná - Campus Capanema.<br>
                     Pesquisa, Inovação e Desenvolvimento Regional.
@@ -226,11 +229,11 @@
             <div class="text-center md:text-right">
                 <h4 class="font-bold text-white mb-4">Acesso Rápido</h4>
                 <ul class="space-y-2 text-sm text-gray-300">
-                    <li><a href="index.html"            class="hover:text-white transition-colors">Início</a></li>
-                    <li><a href="index.html#sobre"       class="hover:text-white transition-colors">O Projeto</a></li>
-                    <li><a href="index.html#objetivos"   class="hover:text-white transition-colors">Objetivos</a></li>
+                    <li><a href="index.html" class="hover:text-white transition-colors">Início</a></li>
+                    <li><a href="index.html#sobre" class="hover:text-white transition-colors">O Projeto</a></li>
+                    <li><a href="index.html#objetivos" class="hover:text-white transition-colors">Objetivos</a></li>
                     <li><a href="index.html#metodologia" class="hover:text-white transition-colors">Metodologia</a></li>
-                    <li><a href="contato.html"           class="hover:text-white transition-colors">Contato</a></li>
+                    <li><a href="contato.html" class="hover:text-white transition-colors">Contato</a></li>
                 </ul>
             </div>
         </div>
@@ -240,7 +243,8 @@
     </footer>
 
     <!-- EmailJS SDK -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
@@ -253,9 +257,9 @@
         //  4. Vá em Account > API Keys e copie sua Public Key
         //  5. Cole os três valores abaixo
         // ─────────────────────────────────────────────
-        const EMAILJS_PUBLIC_KEY  = 'rmT1mw6QGrFGkwmte';   // ex: "user_aBcDeFgH..."
-        const EMAILJS_SERVICE_ID  = 'service_bo91zgd';   // ex: "service_xyz123"
-        const EMAILJS_TEMPLATE_ID = 'rmT1mw6QGrFGkwmte';  // ex: "template_abc456"
+        const EMAILJS_PUBLIC_KEY = 'rmT1mw6QGrFGkwmte';   // ex: "user_aBcDeFgH..."
+        const EMAILJS_SERVICE_ID = 'service_bo91zgd';   // ex: "service_xyz123"
+        const EMAILJS_TEMPLATE_ID = 'template_70kylef';  // ex: "template_abc456"
 
         emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
@@ -270,9 +274,9 @@
         document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault(); // Impede envio tradicional (sem redirecionamento)
 
-            const form    = this;
-            const btn     = form.querySelector('button[type="submit"]');
-            const notice  = document.getElementById('form-notice');
+            const form = this;
+            const btn = form.querySelector('button[type="submit"]');
+            const notice = document.getElementById('form-notice');
 
             // Estado de carregamento
             btn.disabled = true;
@@ -280,10 +284,10 @@
             notice.className = 'hidden';
 
             const templateParams = {
-                nome:      form.querySelector('[name="Nome"]').value,
-                email:     form.querySelector('[name="Email"]').value,
-                assunto:   form.querySelector('[name="Assunto"]').value,
-                mensagem:  form.querySelector('[name="Mensagem"]').value,
+                nome: form.querySelector('[name="Nome"]').value,
+                email: form.querySelector('[name="Email"]').value,
+                assunto: form.querySelector('[name="Assunto"]').value,
+                mensagem: form.querySelector('[name="Mensagem"]').value,
             };
 
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
@@ -300,7 +304,8 @@
                     notice.innerHTML = '<i class="ph ph-warning-circle mr-2"></i>Falha ao enviar. Tente novamente ou contate-nos diretamente.';
                 })
                 .finally(() => {
-                    btn.di
-
-
-
+                    btn.disabled = false;
+                    btn.innerHTML = '<span>Enviar Mensagem</span><i class="ph ph-paper-plane-right"></i>';
+                });
+        });
+    </script>
