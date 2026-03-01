@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto de Inovação - IFPR Campus Capanema</title>
-    <link rel="icon" href="assets/icone-aba.png" type="image/png">
+    <title>Vida Sem Restrição - IFPR Campus Capanema</title>
+    <link rel="icon" href="assets/icon-aba.png" type="image/png">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,16 +14,21 @@
             theme: {
                 extend: {
                     colors: {
-                        'lblue': '#74b0cf',
-                        'dblue': '#2b5c8d',
-                        'lgreen': '#7cb382',
-                        'dgreen': '#43865e',
-                        'lbeige': '#ebca9d',
-                        'dbeige': '#c89a66',
-                        'ifgreen': '#309f41'
+                        'lblue': '#fbffaf',
+                        'dblue': '#92480b',
+                        'lgreen': '#ffde59',
+                        'dgreen': '#ffb31a',
+                        'lbeige': '#fff8e7',
+                        'dbeige': '#ffb31a',
+                        'ifgreen': '#92480b',
+                        'lyellow': '#fbffaf',
+                        'pyellow': '#ffde59',
+                        'dyellow': '#ffb31a',
+                        'caramel': '#92480b',
+                        'deepbrown': '#2b1200'
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Outfit', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
                     }
                 }
             }
@@ -35,7 +40,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+        rel="stylesheet">
 
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -55,13 +62,15 @@
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 transition-all duration-300" id="navbar"
-        style="background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.4);">
+        style="background: rgba(255,253,245,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,222,89,0.35);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 md:h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 cursor-pointer" onclick="window.location.href='index.html'">
-                    <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR Logo" class="h-10 md:h-12 w-auto"
-                        onerror="this.outerHTML='<div class=\'img-fallback h-10 px-3\'>IFPR Capanema</div>'">
+                    <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR"
+                        class="h-12 w-auto opacity-80 hover:opacity-100 transition-all"
+                        style="filter: sepia(1) saturate(3) hue-rotate(5deg) brightness(0.7);"
+                        onerror="this.outerHTML='<div class=\'font-bold text-xl\' style=\'color:#92480b\'>IFPR Capanema</div>'">
                 </div>
 
                 <!-- Desktop Menu -->
@@ -76,26 +85,30 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button onclick="toggleMobileMenu()" id="menu-btn"
-                        class="text-dblue hover:text-ifgreen focus:outline-none p-2">
+                    <button onclick="toggleMobileMenu()" id="menu-btn" class="focus:outline-none p-2"
+                        style="color: #92480b;">
                         <i class="ph ph-list text-3xl" id="menu-icon"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Mobile Menu — fundo sólido, sem transparência -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden w-full"
-            style="background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-top: 1px solid rgba(43,92,141,0.12); box-shadow: 0 8px 24px rgba(0,0,0,0.10);">
+            style="background: rgba(255,253,245,0.97); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,222,89,0.25); box-shadow: 0 8px 24px rgba(146,72,11,0.10);">
             <div class="flex flex-col items-center py-4 gap-1">
                 <button onclick="scrollToSection('hero');      closeMobileMenu()"
-                    class="w-full text-center px-4 py-3 text-base font-semibold text-dblue hover:bg-lblue/10 hover:text-ifgreen transition-colors rounded-lg mx-4">Início</button>
+                    class="w-full text-center px-4 py-3 text-base font-semibold hover:bg-yellow-50 transition-colors rounded-lg mx-4"
+                    style="color:#92480b;">Início</button>
                 <button onclick="scrollToSection('sobre');     closeMobileMenu()"
-                    class="w-full text-center px-4 py-3 text-base font-semibold text-dblue hover:bg-lblue/10 hover:text-ifgreen transition-colors rounded-lg">Sobre</button>
+                    class="w-full text-center px-4 py-3 text-base font-semibold hover:bg-yellow-50 transition-colors rounded-lg"
+                    style="color:#92480b;">Sobre</button>
                 <button onclick="scrollToSection('objetivos'); closeMobileMenu()"
-                    class="w-full text-center px-4 py-3 text-base font-semibold text-dblue hover:bg-lblue/10 hover:text-ifgreen transition-colors rounded-lg">Objetivos</button>
+                    class="w-full text-center px-4 py-3 text-base font-semibold hover:bg-yellow-50 transition-colors rounded-lg"
+                    style="color:#92480b;">Objetivos</button>
                 <button onclick="scrollToSection('metodologia'); closeMobileMenu()"
-                    class="w-full text-center px-4 py-3 text-base font-semibold text-dblue hover:bg-lblue/10 hover:text-ifgreen transition-colors rounded-lg">Metodologia</button>
+                    class="w-full text-center px-4 py-3 text-base font-semibold hover:bg-yellow-50 transition-colors rounded-lg"
+                    style="color:#92480b;">Metodologia</button>
                 <a href="contato.html"
                     class="mt-3 mb-2 px-10 py-3 rounded-full btn-primary font-semibold text-center shadow-lg text-base">Contato</a>
             </div>
@@ -114,17 +127,20 @@
                 <div class="lg:w-1/2 flex flex-col items-start text-left" data-aos="fade-right"
                     data-aos-duration="1000">
                     <div
-                        class="inline-block px-4 py-1 rounded-full glass-panel text-dblue font-semibold text-sm mb-6 border border-lblue/50">
+                        class="inline-block px-4 py-1 rounded-full glass-panel font-semibold text-sm mb-6 badge-yellow">
                         Edital 2217/2025 • Pesquisa e Inovação
                     </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-dblue leading-tight mb-6">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6"
+                        style="color:#2b1200;">
                         Estudo de Viabilidade
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-ifgreen to-dgreen">
+                        <span class="text-transparent bg-clip-text"
+                            style="background: linear-gradient(135deg, #ffb31a, #92480b); -webkit-background-clip: text; background-clip: text;">
                             Financeira e Econômica
                         </span>
                     </h1>
                     <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl font-light">
-                        Desenvolvimento de produto (brownie sem glúten) com análise estratégica nas cidades de
+                        Desenvolvimento de produto (waffle sem glúten e sem leite) com análise estratégica nas cidades
+                        de
                         Realeza e Capanema, Paraná.
                     </p>
                     <div class="flex gap-4">
@@ -137,11 +153,10 @@
 
                 <div class="lg:w-1/2 flex justify-center items-center relative" data-aos="zoom-in"
                     data-aos-duration="1200">
-                    <!-- Liquid Glass com Logo -->
-                    <div class="liquid-glass w-64 h-64 md:w-96 md:h-96 flex items-center justify-center p-8 relative">
+                    <!-- Blob cor do fundo da logo — objeto único flutuando -->
+                    <div class="liquid-glass w-72 h-72 md:w-[26rem] md:h-[26rem]">
                         <img src="./assets/logo-oficial.png" alt="Logo do Projeto"
-                            class="w-full h-auto drop-shadow-2xl z-10"
-                            onerror="this.outerHTML='<div class=\'text-2xl font-bold text-dblue text-center\'>LOGO OFICIAL<br><span class=\'text-sm font-normal\'>Projeto de Inovação</span></div>'">
+                            onerror="this.outerHTML='<div class=\'text-center\' style=\'color:#92480b\'><div style=\'font-family:Outfit,sans-serif; font-size:2.2rem; font-style:italic; font-weight:700; line-height:1.2\'>Vida Sem</div><div style=\'font-family:Outfit,sans-serif; font-size:3rem; font-weight:800; text-transform:uppercase; letter-spacing:-1px\'>RESTRIÇÃO</div><div style=\'font-size:0.9rem; font-weight:500; margin-top:8px; color:#b35a0e\'>Projeto de Inovação · IFPR</div></div>'">
                     </div>
                 </div>
 
@@ -154,19 +169,20 @@
                 <div class="glass-card p-10 md:p-16 rounded-[2rem]" data-aos="fade-up">
                     <div class="flex flex-col md:flex-row gap-12 items-center">
                         <div class="md:w-1/3">
-                            <h2 class="text-3xl font-bold text-dblue mb-4">Sobre o Projeto</h2>
-                            <div class="w-20 h-1 bg-ifgreen rounded-full mb-6"></div>
+                            <h2 class="text-3xl font-bold mb-4" style="color:#2b1200;">Sobre o Projeto</h2>
+                            <div class="w-20 h-1 rounded-full mb-6"
+                                style="background: linear-gradient(90deg, #ffde59, #ffb31a);"></div>
                             <div class="space-y-4">
                                 <div class="flex items-center gap-3">
-                                    <i class="ph ph-map-pin text-2xl text-dgreen"></i>
+                                    <i class="ph ph-map-pin text-2xl" style="color:#ffb31a;"></i>
                                     <span class="text-gray-700 font-medium">Campus Capanema</span>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <i class="ph ph-user-circle text-2xl text-dgreen"></i>
-                                    <span class="text-gray-700 font-medium">Supervisão: Eduardo Takao</span>
+                                    <i class="ph ph-user-circle text-2xl" style="color:#ffb31a;"></i>
+                                    <span class="text-gray-700 font-medium">Supervisão: Marisa Biali Corá</span>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <i class="ph ph-briefcase text-2xl text-dgreen"></i>
+                                    <i class="ph ph-briefcase text-2xl" style="color:#ffb31a;"></i>
                                     <span class="text-gray-700 font-medium">Ciências Sociais Aplicadas</span>
                                 </div>
                             </div>
@@ -174,8 +190,8 @@
                         <div class="md:w-2/3 text-lg text-gray-700 leading-relaxed space-y-4">
                             <p>
                                 Este projeto de inovação tecnológica e administrativa foca no desenvolvimento de um
-                                novo produto alimentício (brownie de chocolate sem glúten, utilizando farinha de
-                                arroz e trigo sarraceno) voltado para pessoas com restrições alimentares e
+                                novo produto alimentício (mistura pronta para waffle sem glúten e sem leite de vaca)
+                                voltado para pessoas com restrições alimentares e
                                 interessados em alimentação inclusiva.
                             </p>
                             <p>
@@ -194,7 +210,7 @@
         <section id="objetivos" class="py-20 px-4">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold text-dblue mb-4">Objetivos do Projeto</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color:#2b1200;">Objetivos do Projeto</h2>
                     <p class="text-gray-600 max-w-2xl mx-auto text-lg">Diretrizes que norteiam nossa pesquisa e
                         inovação.</p>
                 </div>
@@ -202,37 +218,38 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Objetivo Geral -->
                     <div class="glass-card p-10" data-aos="fade-right" data-aos-delay="100">
-                        <div
-                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-lblue to-dblue flex items-center justify-center mb-6 shadow-lg text-white">
-                            <i class="ph ph-target text-3xl"></i>
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg text-white"
+                            style="background: linear-gradient(135deg, #ffde59, #ffb31a);">
+                            <i class="ph ph-target text-3xl" style="color:#2b1200;"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-dblue mb-4">Objetivo Geral</h3>
+                        <h3 class="text-2xl font-bold mb-4" style="color:#2b1200;">Objetivo Geral</h3>
                         <p class="text-gray-700">
                             Analisar a viabilidade financeira e econômica da produção e comercialização de um
-                            brownie sem glúten, estruturando um plano de negócios sólido que avalie o potencial de
+                            waffle sem glúten e sem leite, estruturando um plano de negócios sólido que avalie o
+                            potencial de
                             mercado nas cidades de Capanema e Realeza, PR.
                         </p>
                     </div>
 
                     <!-- Objetivos Específicos -->
                     <div class="glass-card p-10" data-aos="fade-left" data-aos-delay="200">
-                        <div
-                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-lgreen to-dgreen flex items-center justify-center mb-6 shadow-lg text-white">
-                            <i class="ph ph-list-checks text-3xl"></i>
+                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg"
+                            style="background: linear-gradient(135deg, #ffb31a, #92480b);">
+                            <i class="ph ph-list-checks text-3xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-dblue mb-4">Objetivos Específicos</h3>
+                        <h3 class="text-2xl font-bold mb-4" style="color:#2b1200;">Objetivos Específicos</h3>
                         <ul class="space-y-3 text-gray-700">
                             <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle text-ifgreen mt-1 text-xl"></i>
+                                <i class="ph ph-check-circle mt-1 text-xl" style="color:#92480b;"></i>
                                 <span>Realizar pesquisa de mercado para identificar o perfil do consumidor local.</span>
                             </li>
                             <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle text-ifgreen mt-1 text-xl"></i>
+                                <i class="ph ph-check-circle mt-1 text-xl" style="color:#92480b;"></i>
                                 <span>Estruturar o plano financeiro, mapeando custos diretos e indiretos de
                                     produção.</span>
                             </li>
                             <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle text-ifgreen mt-1 text-xl"></i>
+                                <i class="ph ph-check-circle mt-1 text-xl" style="color:#92480b;"></i>
                                 <span>Avaliar indicadores econômicos (VPL, TIR, Payback) para tomada de decisão.</span>
                             </li>
                         </ul>
@@ -246,7 +263,8 @@
             <div class="max-w-7xl mx-auto">
                 <div class="flex flex-col lg:flex-row gap-16 items-center">
                     <div class="lg:w-1/2" data-aos="fade-right">
-                        <h2 class="text-3xl md:text-4xl font-bold text-dblue mb-6">Metodologia &amp; Plano de Negócios
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color:#2b1200;">Metodologia &amp; Plano
+                            de Negócios
                         </h2>
                         <p class="text-gray-700 mb-8 text-lg">
                             Baseado nas melhores práticas do SEBRAE para elaboração de planos de negócios e análise
@@ -256,25 +274,25 @@
 
                         <div class="space-y-6">
                             <div class="glass-panel p-6 rounded-xl flex gap-4 items-center">
-                                <div class="text-4xl font-bold text-lblue opacity-50">01</div>
+                                <div class="text-4xl font-bold opacity-40" style="color:#ffde59;">01</div>
                                 <div>
-                                    <h4 class="font-bold text-dblue">Análise de Mercado</h4>
+                                    <h4 class="font-bold" style="color:#2b1200;">Análise de Mercado</h4>
                                     <p class="text-sm text-gray-600">Estudo de concorrentes, fornecedores e público-alvo
                                         restritivo.</p>
                                 </div>
                             </div>
                             <div class="glass-panel p-6 rounded-xl flex gap-4 items-center">
-                                <div class="text-4xl font-bold text-lgreen opacity-50">02</div>
+                                <div class="text-4xl font-bold opacity-40" style="color:#ffb31a;">02</div>
                                 <div>
-                                    <h4 class="font-bold text-dblue">Plano Operacional</h4>
+                                    <h4 class="font-bold" style="color:#2b1200;">Plano Operacional</h4>
                                     <p class="text-sm text-gray-600">Definição da capacidade produtiva e logística de
                                         distribuição nas duas cidades.</p>
                                 </div>
                             </div>
                             <div class="glass-panel p-6 rounded-xl flex gap-4 items-center">
-                                <div class="text-4xl font-bold text-dbeige opacity-50">03</div>
+                                <div class="text-4xl font-bold opacity-40" style="color:#92480b;">03</div>
                                 <div>
-                                    <h4 class="font-bold text-dblue">Plano Financeiro</h4>
+                                    <h4 class="font-bold" style="color:#2b1200;">Plano Financeiro</h4>
                                     <p class="text-sm text-gray-600">Projeção de receitas, ponto de equilíbrio e análise
                                         de sensibilidade.</p>
                                 </div>
@@ -285,30 +303,31 @@
                     <!-- Resultados Esperados -->
                     <div class="lg:w-1/2 w-full" data-aos="fade-up" data-aos-delay="200">
                         <div class="glass-card p-10 relative overflow-hidden h-full">
-                            <div
-                                class="absolute -right-10 -top-10 w-40 h-40 bg-lbeige rounded-full mix-blend-multiply filter blur-2xl opacity-70">
+                            <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full mix-blend-multiply filter blur-2xl opacity-50"
+                                style="background:#ffde59;">
                             </div>
-                            <div
-                                class="absolute -left-10 -bottom-10 w-40 h-40 bg-lblue rounded-full mix-blend-multiply filter blur-2xl opacity-70">
+                            <div class="absolute -left-10 -bottom-10 w-40 h-40 rounded-full mix-blend-multiply filter blur-2xl opacity-40"
+                                style="background:#ffb31a;">
                             </div>
 
-                            <h3 class="text-2xl font-bold text-dblue mb-8 relative z-10">Resultados Esperados</h3>
+                            <h3 class="text-2xl font-bold mb-8 relative z-10" style="color:#2b1200;">Resultados
+                                Esperados</h3>
 
                             <div class="grid grid-cols-2 gap-6 relative z-10">
                                 <div class="text-center p-4">
-                                    <i class="ph ph-chart-line-up text-4xl text-dgreen mb-2"></i>
+                                    <i class="ph ph-chart-line-up text-4xl mb-2" style="color:#92480b;"></i>
                                     <p class="font-semibold text-gray-800 text-sm">Relatório de Viabilidade</p>
                                 </div>
                                 <div class="text-center p-4">
-                                    <i class="ph ph-plant text-4xl text-dgreen mb-2"></i>
+                                    <i class="ph ph-plant text-4xl mb-2" style="color:#ffb31a;"></i>
                                     <p class="font-semibold text-gray-800 text-sm">Inovação Alimentar</p>
                                 </div>
                                 <div class="text-center p-4">
-                                    <i class="ph ph-article text-4xl text-dblue mb-2"></i>
+                                    <i class="ph ph-article text-4xl mb-2" style="color:#92480b;"></i>
                                     <p class="font-semibold text-gray-800 text-sm">Artigos Científicos</p>
                                 </div>
                                 <div class="text-center p-4">
-                                    <i class="ph ph-users-three text-4xl text-dblue mb-2"></i>
+                                    <i class="ph ph-users-three text-4xl mb-2" style="color:#ffb31a;"></i>
                                     <p class="font-semibold text-gray-800 text-sm">Impacto Regional</p>
                                 </div>
                             </div>
@@ -322,8 +341,10 @@
         <section class="py-20 px-4">
             <div class="max-w-7xl mx-auto">
                 <div class="text-center mb-16" data-aos="fade-up">
-                    <span class="text-ifgreen font-bold tracking-wider uppercase text-sm">Compromisso Global</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-dblue mt-2">Alinhamento aos ODS - ONU</h2>
+                    <span class="font-bold tracking-wider uppercase text-sm" style="color:#92480b;">Compromisso
+                        Global</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2" style="color:#2b1200;">Alinhamento aos ODS - ONU
+                    </h2>
                 </div>
 
                 <div class="flex flex-col md:flex-row gap-8 justify-center">
@@ -365,12 +386,13 @@
     </main>
 
     <!-- Footer -->
-    <footer class="glass-panel border-t border-white/30 pt-16 pb-8 mt-12 relative z-10">
+    <footer class="glass-panel border-t pt-16 pb-8 mt-12 relative z-10" style="border-color: rgba(255,222,89,0.30);">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex flex-col items-center md:items-start gap-4">
                 <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR"
-                    class="h-16 w-auto grayscale opacity-80 hover:grayscale-0 transition-all"
-                    onerror="this.outerHTML='<div class=\'text-dblue font-bold text-xl\'>IFPR Capanema</div>'">
+                    class="h-16 w-auto opacity-80 hover:opacity-100 transition-all"
+                    style="filter: sepia(1) saturate(3) hue-rotate(5deg) brightness(0.7);"
+                    onerror="this.outerHTML='<div class=\'font-bold text-xl\' style=\'color:#92480b\'>IFPR Capanema</div>'">
                 <p class="text-sm text-gray-600 text-center md:text-left max-w-xs">
                     Instituto Federal do Paraná - Campus Capanema.<br>
                     Pesquisa, Inovação e Desenvolvimento Regional.
@@ -378,17 +400,17 @@
             </div>
 
             <div class="text-center md:text-right">
-                <h4 class="font-bold text-dblue mb-4">Acesso Rápido</h4>
+                <h4 class="font-bold mb-4" style="color:#2b1200;">Acesso Rápido</h4>
                 <ul class="space-y-2 text-sm text-gray-600">
                     <li><button onclick="scrollToSection('hero')"
-                            class="hover:text-ifgreen transition-colors">Início</button></li>
-                    <li><button onclick="scrollToSection('sobre')" class="hover:text-ifgreen transition-colors">O
+                            class="hover:text-yellow-600 transition-colors">Início</button></li>
+                    <li><button onclick="scrollToSection('sobre')" class="hover:text-yellow-600 transition-colors">O
                             Projeto</button></li>
                     <li><button onclick="scrollToSection('objetivos')"
-                            class="hover:text-ifgreen transition-colors">Objetivos</button></li>
+                            class="hover:text-yellow-600 transition-colors">Objetivos</button></li>
                     <li><button onclick="scrollToSection('metodologia')"
-                            class="hover:text-ifgreen transition-colors">Metodologia</button></li>
-                    <li><a href="contato.html" class="hover:text-ifgreen transition-colors">Contato</a></li>
+                            class="hover:text-yellow-600 transition-colors">Metodologia</button></li>
+                    <li><a href="contato.html" class="hover:text-yellow-600 transition-colors">Contato</a></li>
                 </ul>
             </div>
         </div>

@@ -16,17 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ─── Navbar Scroll Effect ─── */
     const navbar = document.getElementById('navbar');
     if (navbar) {
-        // Estado inicial baseado no scroll atual (útil ao voltar de outra página)
         applyNavbarScroll();
         window.addEventListener('scroll', applyNavbarScroll);
     }
 
     function applyNavbarScroll() {
         if (window.scrollY > 20) {
-            navbar.classList.add('shadow-md', 'bg-white/70');
+            navbar.classList.add('shadow-md');
             navbar.classList.remove('border-b');
         } else {
-            navbar.classList.remove('shadow-md', 'bg-white/70');
+            navbar.classList.remove('shadow-md');
             navbar.classList.add('border-b');
         }
     }
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const icon = document.getElementById('menu-icon');
         if (!menu) return;
         const isHidden = menu.classList.toggle('hidden');
-        // Troca ícone hambúrguer ↔ X
         if (icon) icon.className = isHidden ? 'ph ph-list text-3xl' : 'ph ph-x text-3xl';
     };
 
@@ -66,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const navHeight = (navbar ? navbar.offsetHeight : 80);
         const targetPosition = section.getBoundingClientRect().top + window.scrollY - navHeight;
         window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-        // Fecha menu mobile se aberto
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileMenu) mobileMenu.classList.add('hidden');
     };
@@ -81,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.add('opacity-80', 'cursor-not-allowed');
                 btn.disabled = true;
             }
-            // O submit segue normalmente para o Formspree
         });
     }
 

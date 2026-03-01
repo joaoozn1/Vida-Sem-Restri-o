@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato — Projeto de Inovação IFPR</title>
-    <link rel="icon" href="assets/icone-aba.png" type="image/png">
+    <title>Vida Sem Restrição - Contato</title>
+    <link rel="icon" href="assets/icon-aba.png" type="image/png">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,16 +14,21 @@
             theme: {
                 extend: {
                     colors: {
-                        'lblue': '#74b0cf',
-                        'dblue': '#2b5c8d',
-                        'lgreen': '#7cb382',
-                        'dgreen': '#43865e',
-                        'lbeige': '#ebca9d',
-                        'dbeige': '#c89a66',
-                        'ifgreen': '#309f41'
+                        'lblue': '#fbffaf',
+                        'dblue': '#92480b',
+                        'lgreen': '#ffde59',
+                        'dgreen': '#ffb31a',
+                        'lbeige': '#fff8e7',
+                        'dbeige': '#ffb31a',
+                        'ifgreen': '#92480b',
+                        'lyellow': '#fbffaf',
+                        'pyellow': '#ffde59',
+                        'dyellow': '#ffb31a',
+                        'caramel': '#92480b',
+                        'deepbrown': '#2b1200'
                     },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        sans: ['Outfit', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
                     }
                 }
             }
@@ -35,7 +40,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+        rel="stylesheet">
 
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -54,14 +61,15 @@
 
     <!-- Navbar (links brancos para contrastar com o fundo escuro) -->
     <nav class="fixed w-full z-50 transition-all duration-300" id="navbar"
-        style="background: rgba(8,22,55,0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.1);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        style="background: rgba(20,8,0,0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,222,89,0.15);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-8">
             <div class="flex justify-between items-center h-16 md:h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 cursor-pointer" onclick="window.location.href='index.html'">
-                    <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR Logo"
-                        class="h-10 md:h-12 w-auto brightness-0 invert"
-                        onerror="this.outerHTML='<div class=\'text-white font-bold text-xl\'>IFPR Capanema</div>'">
+                    <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR"
+                        class="h-12 w-auto opacity-80 hover:opacity-100 transition-all"
+                        style="filter: sepia(1) saturate(3) hue-rotate(5deg) brightness(0.7);"
+                        onerror="this.outerHTML='<div class=\'font-bold text-xl\' style=\'color:#92480b\'>IFPR Capanema</div>'">
                 </div>
 
                 <!-- Desktop Menu -->
@@ -83,18 +91,19 @@
             </div>
         </div>
 
-        <!-- Mobile Menu — fundo escuro sólido (combina com o fundo da página) -->
+        <!-- Mobile Menu — fundo escuro sólido -->
         <div id="mobile-menu" class="hidden md:hidden w-full"
-            style="background: rgba(8,22,55,0.97); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+            style="background: rgba(20,8,0,0.97); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,222,89,0.15); box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
             <div class="flex flex-col items-center py-4 gap-1">
                 <a href="index.html"
-                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Início</a>
+                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors rounded-lg"
+                    style="--hover-color:#ffde59;">Início</a>
                 <a href="index.html#sobre"
-                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Sobre</a>
+                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors rounded-lg">Sobre</a>
                 <a href="index.html#objetivos"
-                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Objetivos</a>
+                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors rounded-lg">Objetivos</a>
                 <a href="index.html#metodologia"
-                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 hover:text-lblue transition-colors rounded-lg">Metodologia</a>
+                    class="w-full text-center px-4 py-3 text-base font-semibold text-white hover:bg-white/10 transition-colors rounded-lg">Metodologia</a>
                 <a href="contato.html"
                     class="mt-3 mb-2 px-10 py-3 rounded-full btn-primary font-semibold text-center shadow-lg text-base">Contato</a>
             </div>
@@ -113,7 +122,7 @@
                 </p>
             </div>
 
-            <!-- Card do Formulário — glassmorfismo reduzido para melhor legibilidade -->
+            <!-- Card do Formulário -->
             <div class="contact-form-panel p-8 md:p-12 rounded-[2rem] shadow-2xl">
                 <form id="contactForm" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -160,12 +169,13 @@
             <!-- E-mail -->
             <div
                 class="contact-form-panel rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1 transition-transform duration-300">
-                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                    <i class="ph ph-envelope text-2xl text-lblue"></i>
+                <div class="w-12 h-12 rounded-full flex items-center justify-center"
+                    style="background:rgba(255,222,89,0.15);">
+                    <i class="ph ph-envelope text-2xl" style="color:#ffde59;"></i>
                 </div>
                 <h3 class="text-white font-bold text-sm uppercase tracking-wider">E-mail</h3>
-                <a href="/cdn-cgi/l/email-protection#ef8c8e829f9a9cc18c8e9f8e818a828eaf86899f9dc18a8b9ac18d9d"
-                    class="text-gray-200 text-sm hover:text-white transition-colors break-all">
+                <a href="mailto:campus.capanema@ifpr.edu.br"
+                    class="text-gray-200 text-sm hover:text-white transition-colors">
                     <span class="__cf_email__"
                         data-cfemail="1a797b776a6f6934797b6a7b747f777b5a737c6a68347f7e6f347868">campus.capanema@ifpr.edu.br</span>
                 </a>
@@ -174,8 +184,9 @@
             <!-- Telefone -->
             <div
                 class="contact-form-panel rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1 transition-transform duration-300">
-                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                    <i class="ph ph-phone text-2xl text-lgreen"></i>
+                <div class="w-12 h-12 rounded-full flex items-center justify-center"
+                    style="background:rgba(255,179,26,0.15);">
+                    <i class="ph ph-phone text-2xl" style="color:#ffb31a;"></i>
                 </div>
                 <h3 class="text-white font-bold text-sm uppercase tracking-wider">Telefone</h3>
                 <a href="tel:+554630301400" class="text-gray-200 text-sm hover:text-white transition-colors">
@@ -186,8 +197,9 @@
             <!-- Localização -->
             <div
                 class="contact-form-panel rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:-translate-y-1 transition-transform duration-300">
-                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
-                    <i class="ph ph-map-pin text-2xl text-lbeige"></i>
+                <div class="w-12 h-12 rounded-full flex items-center justify-center"
+                    style="background:rgba(251,255,175,0.12);">
+                    <i class="ph ph-map-pin text-2xl" style="color:#fbffaf;"></i>
                 </div>
                 <h3 class="text-white font-bold text-sm uppercase tracking-wider">Localização</h3>
                 <a href="https://maps.google.com/?q=Rua+Cariris+750+Capanema+PR" target="_blank" rel="noopener"
@@ -213,8 +225,8 @@
     </main>
 
     <!-- Footer -->
-    <footer style="background:rgba(5,18,40,0.75); backdrop-filter:blur(10px);"
-        class="border-t border-white/10 pt-12 pb-8 relative z-10">
+    <footer style="background:rgba(10,4,0,0.78); backdrop-filter:blur(10px);" class="border-t pt-12 pb-8 relative z-10"
+        style="border-color:rgba(255,222,89,0.12);">
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex flex-col items-center md:items-start gap-4">
                 <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR"
@@ -249,36 +261,19 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script>
-        // ─────────────────────────────────────────────
-        //  CONFIGURAÇÃO DO EMAILJS
-        //  1. Crie uma conta grátis em https://www.emailjs.com
-        //  2. Crie um "Email Service" (Gmail, Outlook…) e copie o Service ID
-        //  3. Crie um "Email Template" e copie o Template ID
-        //  4. Vá em Account > API Keys e copie sua Public Key
-        //  5. Cole os três valores abaixo
-        // ─────────────────────────────────────────────
-        const EMAILJS_PUBLIC_KEY = 'rmT1mw6QGrFGkwmte';   // ex: "user_aBcDeFgH..."
-        const EMAILJS_SERVICE_ID = 'service_bo91zgd';   // ex: "service_xyz123"
-        const EMAILJS_TEMPLATE_ID = 'template_70kylef';  // ex: "template_abc456"
+        const EMAILJS_PUBLIC_KEY = 'rmT1mw6QGrFGkwmte';
+        const EMAILJS_SERVICE_ID = 'service_bo91zgd';
+        const EMAILJS_TEMPLATE_ID = 'template_70kylef';
 
         emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
-        // ─── Variáveis do Template ───────────────────
-        // No painel do EmailJS, ao criar o template, use estas variáveis:
-        //   {{nome}}      → Nome do remetente
-        //   {{email}}     → E-mail do remetente
-        //   {{assunto}}   → Assunto da mensagem
-        //   {{mensagem}}  → Corpo da mensagem
-        // ─────────────────────────────────────────────
-
         document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Impede envio tradicional (sem redirecionamento)
+            e.preventDefault();
 
             const form = this;
             const btn = form.querySelector('button[type="submit"]');
             const notice = document.getElementById('form-notice');
 
-            // Estado de carregamento
             btn.disabled = true;
             btn.innerHTML = '<i class="ph ph-spinner animate-spin text-xl"></i> Enviando…';
             notice.className = 'hidden';
@@ -292,13 +287,12 @@
 
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
                 .then(() => {
-                    // ── Sucesso ──
-                    notice.className = 'mt-4 p-4 rounded-xl text-center text-white font-semibold bg-green-600/70 border border-green-400/40';
+                    notice.className = 'mt-4 p-4 rounded-xl text-center font-semibold border';
+                    notice.style.cssText = 'color:#2b1200; background:rgba(255,222,89,0.85); border-color:rgba(255,179,26,0.6);';
                     notice.innerHTML = '<i class="ph ph-check-circle mr-2"></i>Mensagem enviada com sucesso! Entraremos em contato em breve.';
                     form.reset();
                 })
                 .catch((error) => {
-                    // ── Erro ──
                     console.error('EmailJS error:', error);
                     notice.className = 'mt-4 p-4 rounded-xl text-center text-white font-semibold bg-red-600/70 border border-red-400/40';
                     notice.innerHTML = '<i class="ph ph-warning-circle mr-2"></i>Falha ao enviar. Tente novamente ou contate-nos diretamente.';
@@ -306,6 +300,10 @@
                 .finally(() => {
                     btn.disabled = false;
                     btn.innerHTML = '<span>Enviar Mensagem</span><i class="ph ph-paper-plane-right"></i>';
+                    notice.classList.remove('hidden');
                 });
         });
     </script>
+</body>
+
+</html>

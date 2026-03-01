@@ -4,24 +4,23 @@
    ============================================= */
 
 :root {
-    --light-blue: #74b0cf;
-    --dark-blue: #2b5c8d;
-    --light-green: #7cb382;
-    --dark-green: #43865e;
-    --light-beige: #ebca9d;
-    --dark-beige: #c89a66;
-    --if-green: #309f41;
+    --light-yellow: #fbffaf;
+    --primary-yellow: #ffde59;
+    --dark-yellow: #ffb31a;
+    --caramel-brown: #92480b;
+    --deep-brown: #2b1200;
+    --warm-white: #fffdf5;
+    --cream: #fff8e7;
 }
 
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    /* Trava scroll horizontal no nível raiz */
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f8fafc;
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--warm-white);
     overflow-x: hidden;
     transition: background 0.5s ease;
     width: 100%;
@@ -34,17 +33,16 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    /* usa 100% em vez de 100vw para não incluir largura da barra de scroll */
     height: 100vh;
     z-index: -1;
     overflow: hidden;
-    background: linear-gradient(135deg, #f0f4f8, var(--light-beige));
+    background: linear-gradient(135deg, #fffdf5, #fff3cd);
 }
 
 .blob {
     position: absolute;
     filter: blur(80px);
-    opacity: 0.6;
+    opacity: 0.55;
     animation: blobMove 20s infinite alternate;
 }
 
@@ -53,7 +51,7 @@ body {
     left: -10%;
     width: 50vw;
     height: 50vw;
-    background: var(--light-blue);
+    background: var(--primary-yellow);
     animation-delay: 0s;
 }
 
@@ -62,7 +60,7 @@ body {
     right: -10%;
     width: 60vw;
     height: 60vw;
-    background: var(--light-green);
+    background: var(--dark-yellow);
     animation-delay: -5s;
 }
 
@@ -71,7 +69,7 @@ body {
     left: 40%;
     width: 40vw;
     height: 40vw;
-    background: var(--light-beige);
+    background: var(--light-yellow);
     animation-delay: -10s;
 }
 
@@ -91,46 +89,68 @@ body {
 
 /* ─── Glassmorphism ─── */
 .glass-panel {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 253, 245, 0.55);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 8px 32px 0 rgba(43, 92, 141, 0.1);
+    border: 1px solid rgba(255, 222, 89, 0.35);
+    box-shadow: 0 8px 32px 0 rgba(146, 72, 11, 0.08);
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 253, 245, 0.72);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 222, 89, 0.45);
     border-radius: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px 0 rgba(43, 92, 141, 0.15);
+    box-shadow: 0 15px 40px 0 rgba(146, 72, 11, 0.15);
 }
 
 /* ─── Liquid Glass (Hero Logo) ─── */
 .liquid-glass {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: #fbffaf;
+    border: none;
     border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-    animation: liquid 8s ease-in-out infinite alternate;
-    box-shadow: inset 10px 10px 20px rgba(255, 255, 255, 0.5),
-        0 15px 35px rgba(0, 0, 0, 0.05);
+    animation: liquidShape 9s ease-in-out infinite,
+        logoFloat 4.5s ease-in-out infinite;
+    box-shadow:
+        0 24px 60px rgba(146, 72, 11, 0.22),
+        0 8px 24px rgba(255, 179, 26, 0.30),
+        inset 0 8px 24px rgba(255, 255, 255, 0.55),
+        inset 0 -6px 18px rgba(255, 222, 89, 0.30);
+    transform-origin: center center;
+    padding: 0 !important;
+    overflow: hidden;
 }
 
-@keyframes liquid {
+/* The logo image fills the blob completely — no extra gap */
+.liquid-glass img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+@keyframes liquidShape {
     0% {
         border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
     }
 
-    50% {
-        border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+    20% {
+        border-radius: 58% 42% 38% 62% / 52% 44% 56% 48%;
+    }
+
+    45% {
+        border-radius: 48% 52% 58% 42% / 46% 60% 40% 54%;
+    }
+
+    70% {
+        border-radius: 62% 38% 46% 54% / 56% 42% 58% 44%;
     }
 
     100% {
@@ -138,8 +158,29 @@ body {
     }
 }
 
+@keyframes logoFloat {
+    0% {
+        transform: translateY(0px) rotate(-1.5deg);
+    }
+
+    30% {
+        transform: translateY(-12px) rotate(0.5deg);
+    }
+
+    60% {
+        transform: translateY(-6px) rotate(1.5deg);
+    }
+
+    80% {
+        transform: translateY(-14px) rotate(-0.5deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(-1.5deg);
+    }
+}
+
 /* ─── Contact Page Background ─── */
-/* Estrutura: .contact-page-bg > .bg-img (foto + filtros) + .bg-overlay (gradiente escuro) */
 .contact-page-bg {
     position: fixed;
     inset: 0;
@@ -147,7 +188,6 @@ body {
     overflow: hidden;
 }
 
-/* A foto em si — saturação e nitidez aumentadas via CSS filter */
 .contact-page-bg .bg-img {
     position: absolute;
     inset: 0;
@@ -155,22 +195,18 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    /* +55% saturação · +18% contraste · leve escurecimento */
     filter: saturate(1.55) contrast(1.18) brightness(0.95);
     transform: scale(1.02);
-    /* evita micro-borda branca nas bordas */
 }
 
-/* Overlay escuro por cima para garantir legibilidade do texto */
 .contact-page-bg .bg-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(160deg,
-            rgba(12, 35, 80, 0.72) 0%,
-            rgba(0, 0, 0, 0.80) 100%);
+            rgba(30, 12, 2, 0.80) 0%,
+            rgba(0, 0, 0, 0.85) 100%);
 }
 
-/* Camada 1 — foto com saturação e nitidez aumentadas */
 .contact-page-bg::before {
     content: '';
     position: absolute;
@@ -180,33 +216,30 @@ body {
     z-index: 1;
 }
 
-/* Camada 2 — overlay escuro para legibilidade do texto */
 .contact-page-bg::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(160deg,
-            rgba(15, 40, 80, 0.72) 0%,
-            rgba(0, 0, 0, 0.78) 100%);
+            rgba(30, 12, 2, 0.78) 0%,
+            rgba(0, 0, 0, 0.82) 100%);
     z-index: 2;
 }
 
-/* ─── Contact Form — Glass Panel (menos borrão, mais legível) ─── */
-/* Substituímos o .glass-panel genérico por uma variante específica para o formulário */
+/* ─── Contact Form — Glass Panel ─── */
 .contact-form-panel {
-    background: rgba(12, 35, 68, 0.62);
-    /* azul escuro semi-opaco */
+    background: rgba(20, 8, 0, 0.65);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 222, 89, 0.22);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.40);
 }
 
 /* ─── Form Inputs ─── */
 .glass-input {
     width: 100%;
     background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(255, 222, 89, 0.30);
     border-radius: 0.75rem;
     padding: 0.75rem 1rem;
     color: #fff;
@@ -216,14 +249,14 @@ body {
 }
 
 .glass-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .glass-input:focus {
     outline: none;
-    background: rgba(255, 255, 255, 0.14);
-    border-color: var(--light-blue);
-    box-shadow: 0 0 0 3px rgba(116, 176, 207, 0.3);
+    background: rgba(255, 222, 89, 0.10);
+    border-color: var(--primary-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 222, 89, 0.25);
 }
 
 /* ─── Image Fallback ─── */
@@ -231,8 +264,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.5);
-    color: var(--dark-blue);
+    background: rgba(255, 222, 89, 0.3);
+    color: var(--caramel-brown);
     font-weight: bold;
     text-align: center;
     border-radius: 0.5rem;
@@ -241,8 +274,8 @@ body {
 /* ─── Navbar Links ─── */
 .nav-link {
     position: relative;
-    color: var(--dark-blue);
-    font-weight: 600;
+    color: var(--caramel-brown);
+    font-weight: 700;
     transition: color 0.3s;
 }
 
@@ -253,8 +286,12 @@ body {
     height: 2px;
     bottom: -4px;
     left: 0;
-    background-color: var(--if-green);
+    background-color: var(--dark-yellow);
     transition: width 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--deep-brown);
 }
 
 .nav-link:hover::after {
@@ -266,14 +303,19 @@ body {
     color: rgba(255, 255, 255, 0.92) !important;
 }
 
+.nav-link-white:hover {
+    color: var(--primary-yellow) !important;
+}
+
 .nav-link-white::after {
-    background-color: #fff;
+    background-color: var(--primary-yellow);
 }
 
 /* ─── Primary Button ─── */
 .btn-primary {
-    background: linear-gradient(135deg, var(--if-green), var(--dark-green));
-    color: white;
+    background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+    color: var(--deep-brown);
+    font-weight: 700;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -281,5 +323,40 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(48, 159, 65, 0.3);
+    box-shadow: 0 10px 24px rgba(255, 179, 26, 0.40);
+    background: linear-gradient(135deg, var(--dark-yellow), var(--caramel-brown));
+    color: #fff;
+}
+
+/* ─── Section accent line ─── */
+.accent-line {
+    width: 20px;
+    height: 2px;
+    background: var(--primary-yellow);
+    border-radius: 9999px;
+}
+
+/* ─── Yellow Badge ─── */
+.badge-yellow {
+    background: rgba(255, 222, 89, 0.22);
+    border: 1px solid rgba(255, 222, 89, 0.50);
+    color: var(--caramel-brown);
+}
+
+/* ─── Scroll bar ─── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-yellow);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-yellow);
 }
