@@ -207,25 +207,6 @@ body {
             rgba(0, 0, 0, 0.85) 100%);
 }
 
-.contact-page-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url('./assets/ifpr-foto-drone.jpeg') center / cover no-repeat;
-    filter: saturate(1.7) contrast(1.18) brightness(1.05);
-    z-index: 1;
-}
-
-.contact-page-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg,
-            rgba(30, 12, 2, 0.78) 0%,
-            rgba(0, 0, 0, 0.82) 100%);
-    z-index: 2;
-}
-
 /* ─── Contact Form — Glass Panel ─── */
 .contact-form-panel {
     background: rgba(20, 8, 0, 0.65);
@@ -359,4 +340,191 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--dark-yellow);
+}
+
+/* Version badge and update log */
+.site-version-trigger {
+    position: fixed;
+    right: clamp(0.9rem, 2vw, 1.5rem);
+    bottom: clamp(0.9rem, 2vw, 1.5rem);
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 9999px;
+    background: rgba(255, 253, 245, 0.74);
+    border: 1px solid rgba(255, 222, 89, 0.50);
+    color: var(--caramel-brown);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 10px 24px rgba(43, 18, 0, 0.14);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0.72;
+    transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.site-version-trigger:hover,
+.site-version-trigger:focus-visible {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(43, 18, 0, 0.20);
+    outline: none;
+}
+
+.site-version-trigger--dark {
+    background: rgba(20, 8, 0, 0.58);
+    border-color: rgba(255, 222, 89, 0.28);
+    color: rgba(255, 255, 255, 0.90);
+}
+
+.site-version-trigger--dark:hover,
+.site-version-trigger--dark:focus-visible {
+    color: var(--primary-yellow);
+}
+
+.update-log-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(20, 8, 0, 0.48);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.update-log-overlay:not([hidden]) {
+    animation: updateLogFadeIn 0.18s ease-out both;
+}
+
+.update-log-overlay[hidden] {
+    display: none;
+}
+
+.update-log-modal {
+    width: min(100%, 28rem);
+    border-radius: 1.25rem;
+    background: rgba(255, 253, 245, 0.94);
+    border: 1px solid rgba(255, 222, 89, 0.55);
+    box-shadow: 0 22px 60px rgba(20, 8, 0, 0.28);
+    color: var(--deep-brown);
+    overflow: hidden;
+}
+
+.update-log-overlay:not([hidden]) .update-log-modal {
+    animation: updateLogModalIn 0.24s ease-out both;
+}
+
+.update-log-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 179, 26, 0.22);
+}
+
+.update-log-title {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.update-log-version {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.25rem;
+    color: var(--caramel-brown);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.update-log-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    color: var(--caramel-brown);
+    background: rgba(255, 222, 89, 0.18);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.update-log-close:hover,
+.update-log-close:focus-visible {
+    background: var(--dark-yellow);
+    color: #fff;
+    outline: none;
+}
+
+.update-log-body {
+    padding: 1.25rem;
+}
+
+.update-log-body ul {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.update-log-body li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    color: #5f3a15;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.update-log-body i {
+    flex: 0 0 auto;
+    margin-top: 0.12rem;
+    color: var(--dark-yellow);
+    font-size: 1.15rem;
+}
+
+@keyframes updateLogFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes updateLogModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .update-log-overlay:not([hidden]),
+    .update-log-overlay:not([hidden]) .update-log-modal {
+        animation: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .site-version-trigger {
+        right: 0.75rem;
+        bottom: 0.75rem;
+        padding: 0.42rem 0.68rem;
+        font-size: 0.72rem;
+    }
+
+    .update-log-modal {
+        border-radius: 1rem;
+    }
 }

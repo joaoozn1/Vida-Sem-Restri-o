@@ -419,6 +419,43 @@
         </div>
     </footer>
 
+    <button type="button" class="site-version-trigger" data-update-log-open aria-haspopup="dialog"
+        aria-controls="update-log-modal">
+        <i class="ph ph-info"></i>
+        <span>v3.6.2</span>
+    </button>
+
+    <div class="update-log-overlay" id="update-log-modal" role="dialog" aria-modal="true"
+        aria-labelledby="update-log-title" hidden>
+        <div class="update-log-modal">
+            <div class="update-log-header">
+                <div>
+                    <h2 class="update-log-title" id="update-log-title">Update log</h2>
+                    <span class="update-log-version">Vers&atilde;o 3.6.2</span>
+                </div>
+                <button type="button" class="update-log-close" data-update-log-close aria-label="Fechar update log">
+                    <i class="ph ph-x"></i>
+                </button>
+            </div>
+            <div class="update-log-body">
+                <ul>
+                    <li>
+                        <i class="ph ph-bug"></i>
+                        <span>Corre&ccedil;&atilde;o de bugs gerais nas p&aacute;ginas do site.</span>
+                    </li>
+                    <li>
+                        <i class="ph ph-wrench"></i>
+                        <span>Ajustes de estabilidade nos scripts e links de contato.</span>
+                    </li>
+                    <li>
+                        <i class="ph ph-text-aa"></i>
+                        <span>Revis&atilde;o de textos e pequenos ajustes de acabamento visual.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
