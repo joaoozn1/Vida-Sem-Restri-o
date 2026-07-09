@@ -528,3 +528,191 @@ body {
         border-radius: 1rem;
     }
 }
+
+/* Maintenance page */
+.maintenance-page {
+    min-height: 100vh;
+    color: var(--deep-brown);
+}
+
+.maintenance-shell {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 1rem 3rem;
+}
+
+.maintenance-orbit {
+    position: relative;
+    width: clamp(12rem, 38vw, 22rem);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+}
+
+.maintenance-orbit::before {
+    content: '';
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    border: 1px dashed rgba(146, 72, 11, 0.28);
+    animation: maintenanceSpin 18s linear infinite;
+}
+
+.maintenance-orbit::after {
+    content: '';
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    right: 4%;
+    top: 12%;
+    border-radius: 9999px;
+    background: rgba(255, 222, 89, 0.46);
+    filter: blur(10px);
+}
+
+.maintenance-logo-bubble {
+    position: relative;
+    z-index: 2;
+    width: 76%;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 38% 62% 58% 42% / 46% 42% 58% 54%;
+    background: rgba(255, 253, 245, 0.70);
+    border: 1px solid rgba(255, 222, 89, 0.50);
+    box-shadow:
+        0 24px 60px rgba(146, 72, 11, 0.18),
+        inset 0 12px 34px rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    animation: maintenanceFloat 4.5s ease-in-out infinite;
+}
+
+.maintenance-logo-bubble img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.maintenance-tool {
+    position: absolute;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 3.1rem;
+    height: 3.1rem;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+    color: var(--deep-brown);
+    box-shadow: 0 16px 32px rgba(146, 72, 11, 0.22);
+    animation: maintenanceBob 3s ease-in-out infinite;
+}
+
+.maintenance-tool i {
+    font-size: 1.55rem;
+}
+
+.maintenance-tool--top {
+    top: 0;
+    left: 18%;
+}
+
+.maintenance-tool--right {
+    right: 0;
+    bottom: 26%;
+    animation-delay: -1s;
+}
+
+.maintenance-tool--left {
+    left: 0;
+    bottom: 18%;
+    animation-delay: -1.8s;
+}
+
+.maintenance-progress {
+    position: relative;
+    height: 0.7rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: rgba(146, 72, 11, 0.12);
+    border: 1px solid rgba(255, 179, 26, 0.24);
+}
+
+.maintenance-progress::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 46%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--primary-yellow), var(--dark-yellow), var(--caramel-brown));
+    animation: maintenanceProgress 2.6s ease-in-out infinite;
+}
+
+.maintenance-note {
+    background: rgba(255, 253, 245, 0.66);
+    border: 1px solid rgba(255, 222, 89, 0.42);
+    box-shadow: 0 12px 32px rgba(146, 72, 11, 0.10);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+@keyframes maintenanceFloat {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(1deg);
+    }
+}
+
+@keyframes maintenanceBob {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes maintenanceSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes maintenanceProgress {
+    0% {
+        transform: translateX(-110%);
+    }
+
+    50% {
+        transform: translateX(65%);
+    }
+
+    100% {
+        transform: translateX(240%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .maintenance-orbit::before,
+    .maintenance-logo-bubble,
+    .maintenance-tool,
+    .maintenance-progress::before {
+        animation: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .maintenance-shell {
+        align-items: flex-start;
+        padding-top: 5rem;
+    }
+}
