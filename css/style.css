@@ -510,6 +510,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .update-log-overlay:not([hidden]),
     .update-log-overlay:not([hidden]) .update-log-modal {
         animation: none;
@@ -581,7 +582,7 @@ body {
     display: grid;
     place-items: center;
     border-radius: 38% 62% 58% 42% / 46% 42% 58% 54%;
-    background: rgba(255, 253, 245, 0.70);
+    background: #fbffaf;
     border: 1px solid rgba(255, 222, 89, 0.50);
     box-shadow:
         0 24px 60px rgba(146, 72, 11, 0.18),
@@ -660,6 +661,7 @@ body {
 }
 
 @keyframes maintenanceFloat {
+
     0%,
     100% {
         transform: translateY(0) rotate(-1deg);
@@ -671,6 +673,7 @@ body {
 }
 
 @keyframes maintenanceBob {
+
     0%,
     100% {
         transform: translateY(0);
@@ -702,6 +705,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .maintenance-orbit::before,
     .maintenance-logo-bubble,
     .maintenance-tool,
