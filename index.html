@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vida Sem Restrição - IFPR Campus Capanema</title>
+    <title>Vida Sem Restrição - Site em Manutenção</title>
     <link rel="icon" href="assets/icon-aba.png" type="image/png">
 
     <!-- Tailwind CSS -->
@@ -49,38 +49,94 @@
 
     <!-- Estilos da aplicação -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Estilos exclusivos desta página (toast de aviso) -->
+    <style>
+        .maintenance-toast-wrap {
+            position: fixed;
+            left: 50%;
+            bottom: 1.5rem;
+            transform: translateX(-50%);
+            z-index: 90;
+            width: min(92vw, 26rem);
+            pointer-events: none;
+        }
+
+        .maintenance-toast {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            padding: 0.85rem 1.1rem;
+            border-radius: 1rem;
+            background: rgba(255, 253, 245, 0.94);
+            border: 1px solid rgba(255, 179, 26, 0.5);
+            box-shadow: 0 18px 40px rgba(43, 18, 0, 0.22);
+            color: #2b1200;
+            font-size: 0.92rem;
+            font-weight: 600;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(10px) scale(0.98);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .maintenance-toast.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .maintenance-toast i {
+            flex: 0 0 auto;
+            font-size: 1.3rem;
+            color: #ffb31a;
+            margin-top: 0.05rem;
+        }
+
+        .maintenance-page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fffdf5, #fff3cd);
+        }
+    </style>
 </head>
 
-<body class="text-gray-800 antialiased">
+<body class="text-gray-800 antialiased maintenance-page">
 
-    <!-- Background Blobs -->
+    <!-- Background Blobs (mesmo fundo do site) -->
     <div class="bg-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- Navbar -->
+    <!-- Navbar (visual idêntico ao do site, porém sem navegação real) -->
     <nav class="fixed w-full z-50 transition-all duration-300" id="navbar"
         style="background: rgba(255,253,245,0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,222,89,0.35);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 md:h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 cursor-pointer" onclick="window.location.href='index.html'">
+                <button type="button" onclick="showMaintenanceNotice()" class="flex-shrink-0 focus:outline-none">
                     <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR"
                         class="h-12 w-auto opacity-80 hover:opacity-100 transition-all"
                         style="filter: sepia(1) saturate(3) hue-rotate(5deg) brightness(0.7);"
                         onerror="this.outerHTML='<div class=\'font-bold text-xl\' style=\'color:#92480b\'>IFPR Capanema</div>'">
-                </div>
+                </button>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center" id="nav-links">
-                    <button onclick="scrollToSection('hero')" class="nav-link">Início</button>
-                    <button onclick="scrollToSection('sobre')" class="nav-link">Sobre</button>
-                    <button onclick="scrollToSection('objetivos')" class="nav-link">Objetivos</button>
-                    <button onclick="scrollToSection('metodologia')" class="nav-link">Metodologia</button>
-                    <a href="contato.html"
-                        class="px-6 py-2 rounded-full btn-primary font-semibold shadow-lg">Contato</a>
+                    <button type="button" onclick="showMaintenanceNotice('Início')" class="nav-link">Início</button>
+                    <button type="button" onclick="showMaintenanceNotice('Sobre')" class="nav-link">Sobre</button>
+                    <button type="button" onclick="showMaintenanceNotice('Objetivos')"
+                        class="nav-link">Objetivos</button>
+                    <button type="button" onclick="showMaintenanceNotice('Metodologia')"
+                        class="nav-link">Metodologia</button>
+                    <button type="button" onclick="showMaintenanceNotice('Contato')"
+                        class="px-6 py-2 rounded-full btn-primary font-semibold shadow-lg">Contato</button>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -97,325 +153,100 @@
         <div id="mobile-menu" class="hidden md:hidden w-full"
             style="background: rgba(255,253,245,0.97); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,222,89,0.25); box-shadow: 0 8px 24px rgba(146,72,11,0.10);">
             <div class="flex flex-col items-center py-4 gap-1">
-                <button onclick="scrollToSection('hero');      closeMobileMenu()"
+                <button type="button" onclick="showMaintenanceNotice('Início')"
                     class="w-full text-center px-4 py-3 text-base font-semibold hover:bg-yellow-50 transition-colors rounded-lg mx-4"
                     style="color:#92480b;">Início</button>
-                <button onclick="scrollToSection('sobre');     closeMobileMenu()"
+                <button type="button" onclick="showMaintenanceNotice('Sobre')"
                     class="w-full text-center px-4 py-3 text-base font-semibold hover:bg-yellow-50 transition-colors rounded-lg"
                     style="color:#92480b;">Sobre</button>
-                <button onclick="scrollToSection('objetivos'); closeMobileMenu()"
+                <button type="button" onclick="showMaintenanceNotice('Objetivos')"
                     class="w-full text-center px-4 py-3 text-base font-semibold hover:bg-yellow-50 transition-colors rounded-lg"
                     style="color:#92480b;">Objetivos</button>
-                <button onclick="scrollToSection('metodologia'); closeMobileMenu()"
+                <button type="button" onclick="showMaintenanceNotice('Metodologia')"
                     class="w-full text-center px-4 py-3 text-base font-semibold hover:bg-yellow-50 transition-colors rounded-lg"
                     style="color:#92480b;">Metodologia</button>
-                <a href="contato.html"
-                    class="mt-3 mb-2 px-10 py-3 rounded-full btn-primary font-semibold text-center shadow-lg text-base">Contato</a>
+                <button type="button" onclick="showMaintenanceNotice('Contato')"
+                    class="mt-3 mb-2 px-10 py-3 rounded-full btn-primary font-semibold text-center shadow-lg text-base">Contato</button>
             </div>
         </div>
     </nav>
 
     <!-- ═══════════════════════════════════════ -->
-    <!--  PÁGINA: HOME                           -->
+    <!--  PÁGINA: MANUTENÇÃO                     -->
     <!-- ═══════════════════════════════════════ -->
-    <main class="pt-20">
+    <main class="maintenance-shell">
+        <div class="max-w-5xl mx-auto w-full px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-14">
 
-        <!-- Hero Section -->
-        <section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden px-4 py-20">
-            <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 relative z-10">
+                <!-- Ilustração animada -->
+                <div class="lg:w-2/5 flex justify-center" data-aos="zoom-in" data-aos-duration="900">
+                    <div class="maintenance-orbit">
+                        <div class="maintenance-logo-bubble">
+                            <img src="./assets/logo-oficial.png" alt="Vida Sem Restrição"
+                                onerror="this.outerHTML='<i class=\'ph ph-leaf\' style=\'font-size:3.5rem;color:#92480b;\'></i>'">
+                        </div>
+                        <div class="maintenance-tool maintenance-tool--top" aria-hidden="true">
+                            <i class="ph ph-wrench"></i>
+                        </div>
+                        <div class="maintenance-tool maintenance-tool--right" aria-hidden="true">
+                            <i class="ph ph-gear-six"></i>
+                        </div>
+                        <div class="maintenance-tool maintenance-tool--left" aria-hidden="true">
+                            <i class="ph ph-hammer"></i>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="lg:w-1/2 flex flex-col items-start text-left" data-aos="fade-right"
-                    data-aos-duration="1000">
+                <!-- Texto -->
+                <div class="lg:w-3/5 text-center lg:text-left" data-aos="fade-left" data-aos-duration="900">
                     <div
                         class="inline-block px-4 py-1 rounded-full glass-panel font-semibold text-sm mb-6 badge-yellow">
-                        Edital 2217/2025 • Pesquisa e Inovação
+                        <i class="ph ph-arrow-clockwise mr-1"></i> Atualizando o site
                     </div>
+
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6"
                         style="color:#2b1200;">
-                        Estudo de Viabilidade
+                        Estamos em
                         <span class="text-transparent bg-clip-text"
                             style="background: linear-gradient(135deg, #ffb31a, #92480b); -webkit-background-clip: text; background-clip: text;">
-                            Financeira e Econômica
+                            Manutenção
                         </span>
                     </h1>
-                    <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl font-light">
-                        Desenvolvimento de produto (waffle sem glúten e sem leite) com análise estratégica nas cidades
-                        de
-                        Realeza e Capanema, Paraná.
+
+                    <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-xl mx-auto lg:mx-0 font-light">
+                        Estamos ajustando alguns detalhes do site do projeto
+                        <strong>Vida Sem Restrição</strong> para deixar tudo ainda melhor. Voltaremos
+                        ao ar em breve — obrigado pela paciência!
                     </p>
-                    <div class="flex gap-4">
-                        <button onclick="scrollToSection('sobre')"
-                            class="px-8 py-3 rounded-full btn-primary font-semibold shadow-lg text-lg">
-                            Conhecer o Projeto
-                        </button>
-                    </div>
-                </div>
 
-                <div class="lg:w-1/2 flex justify-center items-center relative" data-aos="zoom-in"
-                    data-aos-duration="1200">
-                    <!-- Blob cor do fundo da logo — objeto único flutuando -->
-                    <div class="liquid-glass w-72 h-72 md:w-[26rem] md:h-[26rem]">
-                        <img src="./assets/logo-oficial.png" alt="Logo do Projeto"
-                            onerror="this.outerHTML='<div class=\'text-center\' style=\'color:#92480b\'><div style=\'font-family:Outfit,sans-serif; font-size:2.2rem; font-style:italic; font-weight:700; line-height:1.2\'>Vida Sem</div><div style=\'font-family:Outfit,sans-serif; font-size:3rem; font-weight:800; text-transform:uppercase; letter-spacing:-1px\'>RESTRIÇÃO</div><div style=\'font-size:0.9rem; font-weight:500; margin-top:8px; color:#b35a0e\'>Projeto de Inovação · IFPR</div></div>'">
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Sobre o Projeto -->
-        <section id="sobre" class="py-20 px-4 relative z-10">
-            <div class="max-w-7xl mx-auto">
-                <div class="glass-card p-10 md:p-16 rounded-[2rem]" data-aos="fade-up">
-                    <div class="flex flex-col md:flex-row gap-12 items-center">
-                        <div class="md:w-1/3">
-                            <h2 class="text-3xl font-bold mb-4" style="color:#2b1200;">Sobre o Projeto</h2>
-                            <div class="w-20 h-1 rounded-full mb-6"
-                                style="background: linear-gradient(90deg, #ffde59, #ffb31a);"></div>
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-3">
-                                    <i class="ph ph-map-pin text-2xl" style="color:#ffb31a;"></i>
-                                    <span class="text-gray-700 font-medium">Campus Capanema</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <i class="ph ph-user-circle text-2xl" style="color:#ffb31a;"></i>
-                                    <span class="text-gray-700 font-medium">Supervisão: Eliane May e Marisa Biali
-                                        Corá</span>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <i class="ph ph-briefcase text-2xl" style="color:#ffb31a;"></i>
-                                    <span class="text-gray-700 font-medium">Ciências Sociais Aplicadas</span>
-                                </div>
-                            </div>
+                    <!-- Barra de progresso -->
+                    <div class="max-w-md mx-auto lg:mx-0 mb-8">
+                        <div class="flex justify-between text-sm font-semibold mb-2" style="color:#92480b;">
+                            <span>Progresso da atualização</span>
+                            <span><i class="ph ph-clock-countdown mr-1"></i>Em andamento</span>
                         </div>
-                        <div class="md:w-2/3 text-lg text-gray-700 leading-relaxed space-y-4">
-                            <p>
-                                Este projeto de inovação tecnológica e administrativa foca no desenvolvimento de um
-                                novo produto alimentício (mistura pronta para waffle sem glúten e sem leite de vaca)
-                                voltado para pessoas com restrições alimentares e
-                                interessados em alimentação inclusiva.
-                            </p>
-                            <p>
-                                A pesquisa realiza um estudo aprofundado de viabilidade financeira e econômica para
-                                a introdução deste produto nos mercados das cidades de <strong>Realeza-PR</strong> e
-                                <strong>Capanema-PR</strong>, integrando conceitos de planos de negócios e análise
-                                mercadológica sustentável.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Objetivos -->
-        <section id="objetivos" class="py-20 px-4">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color:#2b1200;">Objetivos do Projeto</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">Diretrizes que norteiam nossa pesquisa e
-                        inovação.</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Objetivo Geral -->
-                    <div class="glass-card p-10" data-aos="fade-right" data-aos-delay="100">
-                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg text-white"
-                            style="background: linear-gradient(135deg, #ffde59, #ffb31a);">
-                            <i class="ph ph-target text-3xl" style="color:#2b1200;"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4" style="color:#2b1200;">Objetivo Geral</h3>
-                        <p class="text-gray-700">
-                            Analisar a viabilidade financeira e econômica da produção e comercialização de um
-                            waffle sem glúten e sem leite, estruturando um plano de negócios sólido que avalie o
-                            potencial de
-                            mercado nas cidades de Capanema e Realeza, PR.
-                        </p>
+                        <div class="maintenance-progress"></div>
                     </div>
 
-                    <!-- Objetivos Específicos -->
-                    <div class="glass-card p-10" data-aos="fade-left" data-aos-delay="200">
-                        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-lg"
-                            style="background: linear-gradient(135deg, #ffb31a, #92480b);">
-                            <i class="ph ph-list-checks text-3xl text-white"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4" style="color:#2b1200;">Objetivos Específicos</h3>
-                        <ul class="space-y-3 text-gray-700">
-                            <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle mt-1 text-xl" style="color:#92480b;"></i>
-                                <span>Realizar pesquisa de mercado para identificar o perfil do consumidor local.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle mt-1 text-xl" style="color:#92480b;"></i>
-                                <span>Estruturar o plano financeiro, mapeando custos diretos e indiretos de
-                                    produção.</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="ph ph-check-circle mt-1 text-xl" style="color:#92480b;"></i>
-                                <span>Avaliar indicadores econômicos (VPL, TIR, Payback) para tomada de decisão.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Metodologia e Plano de Trabalho -->
-        <section id="metodologia" class="py-20 px-4 relative">
-            <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col lg:flex-row gap-16 items-center">
-                    <div class="lg:w-1/2" data-aos="fade-right">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-6" style="color:#2b1200;">Metodologia &amp; Plano
-                            de Negócios
-                        </h2>
-                        <p class="text-gray-700 mb-8 text-lg">
-                            Baseado nas melhores práticas do SEBRAE para elaboração de planos de negócios e análise
-                            de viabilidade, nossa abordagem é sistemática e orientada a dados. A pesquisa teórica
-                            aborda desde o consenso brasileiro sobre alergia alimentar até métodos de precificação.
-                        </p>
-
-                        <div class="space-y-6">
-                            <div class="glass-panel p-6 rounded-xl flex gap-4 items-center">
-                                <div class="text-4xl font-bold opacity-40" style="color:#ffde59;">01</div>
-                                <div>
-                                    <h4 class="font-bold" style="color:#2b1200;">Análise de Mercado</h4>
-                                    <p class="text-sm text-gray-600">Estudo de concorrentes, fornecedores e público-alvo
-                                        restritivo.</p>
-                                </div>
-                            </div>
-                            <div class="glass-panel p-6 rounded-xl flex gap-4 items-center">
-                                <div class="text-4xl font-bold opacity-40" style="color:#ffb31a;">02</div>
-                                <div>
-                                    <h4 class="font-bold" style="color:#2b1200;">Plano Operacional</h4>
-                                    <p class="text-sm text-gray-600">Definição da capacidade produtiva e logística de
-                                        distribuição nas duas cidades.</p>
-                                </div>
-                            </div>
-                            <div class="glass-panel p-6 rounded-xl flex gap-4 items-center">
-                                <div class="text-4xl font-bold opacity-40" style="color:#92480b;">03</div>
-                                <div>
-                                    <h4 class="font-bold" style="color:#2b1200;">Plano Financeiro</h4>
-                                    <p class="text-sm text-gray-600">Projeção de receitas, ponto de equilíbrio e análise
-                                        de sensibilidade.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Resultados Esperados -->
-                    <div class="lg:w-1/2 w-full" data-aos="fade-up" data-aos-delay="200">
-                        <div class="glass-card p-10 relative overflow-hidden h-full">
-                            <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full mix-blend-multiply filter blur-2xl opacity-50"
-                                style="background:#ffde59;">
-                            </div>
-                            <div class="absolute -left-10 -bottom-10 w-40 h-40 rounded-full mix-blend-multiply filter blur-2xl opacity-40"
-                                style="background:#ffb31a;">
-                            </div>
-
-                            <h3 class="text-2xl font-bold mb-8 relative z-10" style="color:#2b1200;">Resultados
-                                Esperados</h3>
-
-                            <div class="grid grid-cols-2 gap-6 relative z-10">
-                                <div class="text-center p-4">
-                                    <i class="ph ph-chart-line-up text-4xl mb-2" style="color:#92480b;"></i>
-                                    <p class="font-semibold text-gray-800 text-sm">Relatório de Viabilidade</p>
-                                </div>
-                                <div class="text-center p-4">
-                                    <i class="ph ph-plant text-4xl mb-2" style="color:#ffb31a;"></i>
-                                    <p class="font-semibold text-gray-800 text-sm">Inovação Alimentar</p>
-                                </div>
-                                <div class="text-center p-4">
-                                    <i class="ph ph-article text-4xl mb-2" style="color:#92480b;"></i>
-                                    <p class="font-semibold text-gray-800 text-sm">Artigos Científicos</p>
-                                </div>
-                                <div class="text-center p-4">
-                                    <i class="ph ph-users-three text-4xl mb-2" style="color:#ffb31a;"></i>
-                                    <p class="font-semibold text-gray-800 text-sm">Impacto Regional</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ODS Section -->
-        <section class="py-20 px-4">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <span class="font-bold tracking-wider uppercase text-sm" style="color:#92480b;">Compromisso
-                        Global</span>
-                    <h2 class="text-3xl md:text-4xl font-bold mt-2" style="color:#2b1200;">Alinhamento aos ODS - ONU
-                    </h2>
-                </div>
-
-                <div class="flex flex-col md:flex-row gap-8 justify-center">
-                    <!-- ODS 2 -->
-                    <div class="glass-card p-8 md:w-1/3 border-l-4 border-l-[#DDA63A]" data-aos="flip-left"
-                        data-aos-delay="100">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div
-                                class="w-16 h-16 bg-[#DDA63A] rounded flex items-center justify-center text-white font-bold text-2xl shadow-md">
-                                2</div>
-                            <h3 class="font-bold text-xl text-gray-800 leading-tight">Fome Zero e Agricultura
-                                Sustentável</h3>
-                        </div>
-                        <p class="text-sm text-gray-600">
-                            <strong>Subobjetivo 2.4:</strong> Garantir sistemas sustentáveis de produção de
-                            alimentos e implementar práticas resilientes que aumentem a produtividade,
-                            fortalecendo a capacidade de adaptação.
-                        </p>
-                    </div>
-
-                    <!-- ODS 4 -->
-                    <div class="glass-card p-8 md:w-1/3 border-l-4 border-l-[#C5192D]" data-aos="flip-right"
-                        data-aos-delay="200">
-                        <div class="flex items-center gap-4 mb-4">
-                            <div
-                                class="w-16 h-16 bg-[#C5192D] rounded flex items-center justify-center text-white font-bold text-2xl shadow-md">
-                                4</div>
-                            <h3 class="font-bold text-xl text-gray-800 leading-tight">Educação de Qualidade</h3>
-                        </div>
-                        <p class="text-sm text-gray-600">
-                            Integração da pesquisa acadêmica com necessidades reais de mercado, promovendo o
-                            aprendizado contínuo, a inovação científica e a formação profissionalizante no IFPR.
+                    <!-- Nota de contato -->
+                    <div
+                        class="maintenance-note rounded-2xl p-5 max-w-md mx-auto lg:mx-0 flex items-start gap-3 text-left">
+                        <i class="ph ph-envelope-simple-open text-2xl" style="color:#92480b;"></i>
+                        <p class="text-sm text-gray-700">
+                            Precisa falar com a equipe agora? Envie um e-mail para
+                            <a href="mailto:vidasemrestricaoifpr@gmail.com"
+                                class="font-semibold underline decoration-dashed"
+                                style="color:#92480b;">vidasemrestricaoifpr@gmail.com</a>.
                         </p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="glass-panel border-t pt-16 pb-8 mt-12 relative z-10" style="border-color: rgba(255,222,89,0.30);">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex flex-col items-center md:items-start gap-4">
-                <img src="./assets/if-logo-fundo-transparente.png" alt="IFPR"
-                    class="h-16 w-auto opacity-80 hover:opacity-100 transition-all"
-                    style="filter: sepia(1) saturate(3) hue-rotate(5deg) brightness(0.7);"
-                    onerror="this.outerHTML='<div class=\'font-bold text-xl\' style=\'color:#92480b\'>IFPR Capanema</div>'">
-                <p class="text-sm text-gray-600 text-center md:text-left max-w-xs">
-                    Instituto Federal do Paraná - Campus Capanema.<br>
-                    Pesquisa, Inovação e Desenvolvimento Regional.
-                </p>
-            </div>
-
-            <div class="text-center md:text-right">
-                <h4 class="font-bold mb-4" style="color:#2b1200;">Acesso Rápido</h4>
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li><button onclick="scrollToSection('hero')"
-                            class="hover:text-yellow-600 transition-colors">Início</button></li>
-                    <li><button onclick="scrollToSection('sobre')" class="hover:text-yellow-600 transition-colors">O
-                            Projeto</button></li>
-                    <li><button onclick="scrollToSection('objetivos')"
-                            class="hover:text-yellow-600 transition-colors">Objetivos</button></li>
-                    <li><button onclick="scrollToSection('metodologia')"
-                            class="hover:text-yellow-600 transition-colors">Metodologia</button></li>
-                    <li><a href="contato.html" class="hover:text-yellow-600 transition-colors">Contato</a></li>
-                </ul>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-gray-300/30 text-center text-sm text-gray-500">
+    </main>
+
+    <!-- Footer minimalista -->
+    <footer class="glass-panel border-t pt-8 pb-6 relative z-10" style="border-color: rgba(255,222,89,0.30);">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
             &copy; 2026 Projeto de Inovação IFPR (Edital 2217/2025). Todos os direitos reservados.
         </div>
     </footer>
@@ -441,7 +272,7 @@
             <div class="update-log-body">
                 <ul>
                     <li>
-                        <i class="ph ph-bug"></i>
+                        <i class="ph ph-wrench"></i>
                         <span>P&aacute;gina de manuten&ccedil;&atilde;o ajustada.</span>
                     </li>
                 </ul>
@@ -449,8 +280,36 @@
         </div>
     </div>
 
+    <!-- Toast de aviso (nenhuma outra aba do site é acessível durante a manutenção) -->
+    <div class="maintenance-toast-wrap">
+        <div class="maintenance-toast" id="maintenance-toast" role="status" aria-live="polite">
+            <i class="ph ph-warning-circle"></i>
+            <span id="maintenance-toast-text">Esta seção está indisponível durante a manutenção.</span>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script>
+        let maintenanceToastTimer = null;
+
+        function showMaintenanceNotice(sectionName) {
+            const toast = document.getElementById('maintenance-toast');
+            const text = document.getElementById('maintenance-toast-text');
+            if (!toast || !text) return;
+
+            text.textContent = sectionName
+                ? `A seção "${sectionName}" está indisponível. O site voltará em breve.`
+                : 'O site está em manutenção no momento.';
+
+            toast.classList.add('is-visible');
+
+            clearTimeout(maintenanceToastTimer);
+            maintenanceToastTimer = setTimeout(() => {
+                toast.classList.remove('is-visible');
+            }, 3200);
+        }
+    </script>
 </body>
 
 </html>
